@@ -160,3 +160,10 @@ major_catH <- floods %>%
   group_by(names) %>%
   summarise( max_height = max(gheight.ft))
 major_catH
+
+# HW QUESTION 4
+select(floods,datetime)
+
+ifelse(floods$gheight.ft > 7, "greater than 7", "less than 7")
+
+hist(floods$gheight.ft, xlab = "flood heights (ft)", ylab = "counts", col = "blue", freq = NULL)
