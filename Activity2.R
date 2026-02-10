@@ -95,5 +95,68 @@ flood_cat <- floods %>%
   summarise( min_date = min(dateF))
 flood_cat
 
+#HW QUESTION 1
 
+# seperate data from each stream 
+fisheatingH <- streamH %>% 
+  filter(siteID == 2256500)
+santafeH <- streamH %>%
+  filter(siteID == 2322500)
+withlacoocheeH <- streamH %>%
+  filter(siteID == 2312000)
 
+# plot each river
+plot(peaceH$dateF, # x data
+     peaceH$gheight.ft, 
+     type = "b", 
+     pch = 19,
+     ylab = "Peace River Stream Stages (ft)", 
+     xlab = "Date")
+
+plot(santafeH$dateF, # x data
+     santafeH$gheight.ft, 
+     type = "b", 
+     pch = 19,
+     ylab = "Santa Fe River Stream Stages (ft)", 
+     xlab = "Date")
+
+plot(fisheatingH$dateF, # x data
+     fisheatingH$gheight.ft, 
+     type = "b", 
+     pch = 19,
+     ylab = "Fisheating creek Stream Stages (ft)", 
+     xlab = "Date")
+
+plot(withlacoocheeH$dateF, # x data
+     withlacoocheeH$gheight.ft, 
+     type = "b", 
+     pch = 19,
+     ylab = "Withlacoochee river Stream Stages (ft)", 
+     xlab = "Date")
+
+#HW QUESTION 2
+action_cat <- floods %>%
+  filter(gheight.ft >= action.ft) %>%
+  group_by(names) %>%
+  summarise( min_date = min(dateF))
+
+moderate_cat <- floods %>%
+  filter(gheight.ft >= moderate.ft) %>%
+  group_by(names) %>%
+  summarise( min_date = min(dateF))
+
+major_cat <- floods %>%
+  filter(gheight.ft >= major.ft) %>%
+  group_by(names) %>%
+  summarise( min_date = min(dateF))
+action_cat
+flood_cat
+moderate_cat
+major_cat
+
+# HW Question 3
+major_catH <- floods %>%
+  filter(gheight.ft >= major.ft) %>%
+  group_by(names) %>%
+  summarise( max_height = max(gheight.ft))
+major_catH
